@@ -1,0 +1,56 @@
+EXPERIMENT 11: Login Authentication using Java Servlet
+
+AIM
+To write a Java Servlet program to implement a login authentication system using username and password.
+
+PROCEDURE
+1. Create a web project and add login.html.
+2. Create LoginServlet and map it to the URL /LoginServlet.
+3. Read the username and password submitted by the form.
+4. Compare them with the demonstration credentials in the program.
+5. Display a success or failure message.
+6. Deploy and test the application on Tomcat. This simple example is for lab demonstration only.
+
+PROGRAM FILES
+
+login.html
+==========
+<!DOCTYPE html>
+<html><head><title>Login</title></head><body>
+<h2>Login Form</h2>
+<form action="LoginServlet" method="post">
+  Username: <input type="text" name="username" required><br><br>
+  Password: <input type="password" name="password" required><br><br>
+  <input type="submit" value="Login">
+</form>
+</body></html>
+
+LoginServlet.java
+=================
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    String user = request.getParameter("username");
+    String pass = request.getParameter("password");
+    response.setContentType("text/html");
+    PrintWriter out = response.getWriter();
+
+    if ("admin".equals(user) && "1234".equals(pass)) {
+      out.println("<h2>Login Successful</h2>");
+    } else {
+      out.println("<h2>Invalid Username or Password</h2>");
+    }
+  }
+}
+
+OUTPUT
+Entering username admin and password 1234 displays Login Successful. Any other combination displays Invalid Username or Password.
+
+RESULT
+Thus, a basic login authentication system using Java Servlet was implemented successfully.

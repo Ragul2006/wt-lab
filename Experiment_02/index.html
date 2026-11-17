@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Image Map</title></head>
+<body>
+<h2>India - Image Map</h2>
+<p>Click a hotspot to view information.</p>
+<img src="india.jpg" alt="India map" usemap="#indiamap" width="500">
+<map name="indiamap">
+  <area shape="rect" coords="40,40,150,120" href="javascript:void(0)" onclick="showInfo('Delhi: Capital of India')">
+  <area shape="rect" coords="160,150,270,240" href="javascript:void(0)" onclick="showInfo('Mumbai: Major city in Maharashtra')">
+  <area shape="rect" coords="100,300,220,390" href="javascript:void(0)" onclick="showInfo('Chennai: Capital of Tamil Nadu')">
+</map>
+<p id="info">Selected place information appears here.</p>
+<script>
+function showInfo(message) {
+  document.getElementById("info").textContent = message;
+}
+</script>
+</body>
+</html>

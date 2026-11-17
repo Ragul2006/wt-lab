@@ -1,0 +1,75 @@
+EXPERIMENT 9: Servlet Invocation from HTML Form and Session Tracking
+
+AIM
+To write Java servlet programs to invoke a servlet from an HTML form and demonstrate session tracking.
+
+PROCEDURE
+1. Create a web project and add index.html with a form.
+2. Create FormServlet to receive the submitted name.
+3. Create SessionServlet to create or retrieve an HttpSession.
+4. Store a visit counter in the session using setAttribute().
+5. Display the session ID and visit count.
+6. Configure servlet URL mappings using annotations or web.xml and run on Tomcat.
+
+PROGRAM FILES
+
+index.html
+==========
+<!DOCTYPE html>
+<html><body>
+<h2>Servlet Form</h2>
+<form action="FormServlet" method="get">
+  Enter your name: <input type="text" name="firstname" required>
+  <input type="submit" value="Submit">
+</form>
+<p><a href="SessionServlet">Open Session Tracking</a></p>
+</body></html>
+
+FormServlet.java
+================
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+@WebServlet("/FormServlet")
+public class FormServlet extends HttpServlet {
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    response.setContentType("text/html");
+    String name = request.getParameter("firstname");
+    PrintWriter out = response.getWriter();
+    out.println("<h2>Hello " + name + ", Welcome to Servlets!</h2>");
+  }
+}
+
+SessionServlet.java
+===================
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
+
+@WebServlet("/SessionServlet")
+public class SessionServlet extends HttpServlet {
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+      throws ServletException, IOException {
+    HttpSession session = request.getSession(true);
+    Integer visits = (Integer) session.getAttribute("visits");
+    if (visits == null) visits = 0;
+    visits++;
+    session.setAttribute("visits", visits);
+
+    response.setContentType("text/html");
+    PrintWriter out = response.getWriter();
+    out.println("<h2>Session Tracking</h2>");
+    out.println("<p>Session ID: " + session.getId() + "</p>");
+    out.println("<p>Number of visits: " + visits + "</p>");
+  }
+}
+
+OUTPUT
+The form servlet displays a greeting with the submitted name. Opening SessionServlet repeatedly in the same browser session increases the visit count and displays the session ID.
+
+RESULT
+Thus, servlet invocation from an HTML form and session tracking using HttpSession were implemented successfully.

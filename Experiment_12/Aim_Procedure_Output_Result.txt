@@ -1,0 +1,56 @@
+EXPERIMENT 12: Library Management using JSP
+
+AIM
+To develop a JSP application to maintain book details, issue dates and return dates.
+
+PROCEDURE
+1. Create a JSP web project.
+2. Create library.jsp with a form for book ID, book name, student name, issue date and return date.
+3. Submit the form to display.jsp using POST.
+4. Read the form values using request.getParameter().
+5. Display the submitted library record in a table.
+6. Run the JSP application on Apache Tomcat. This simple version displays submitted data and does not permanently store it in a database.
+
+PROGRAM FILES
+
+library.jsp
+===========
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html><head><title>Library Management</title></head><body>
+<h2>Library Book Details</h2>
+<form action="display.jsp" method="post">
+  Book ID: <input name="bookid" required><br><br>
+  Book Name: <input name="bookname" required><br><br>
+  Student Name: <input name="student" required><br><br>
+  Issue Date: <input type="date" name="issuedate" required><br><br>
+  Return Date: <input type="date" name="returndate" required><br><br>
+  <input type="submit" value="Save Details">
+</form>
+</body></html>
+
+display.jsp
+===========
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%
+String id = request.getParameter("bookid");
+String book = request.getParameter("bookname");
+String student = request.getParameter("student");
+String issue = request.getParameter("issuedate");
+String ret = request.getParameter("returndate");
+%>
+<html><head><title>Book Record</title></head><body>
+<h2>Library Record</h2>
+<table border="1" cellpadding="8">
+<tr><th>Book ID</th><td><%= id %></td></tr>
+<tr><th>Book Name</th><td><%= book %></td></tr>
+<tr><th>Student</th><td><%= student %></td></tr>
+<tr><th>Issue Date</th><td><%= issue %></td></tr>
+<tr><th>Return Date</th><td><%= ret %></td></tr>
+</table>
+</body></html>
+
+OUTPUT
+The form accepts book ID, book name, student name, issue date and return date. After submission, display.jsp shows the entered details in a table.
+
+RESULT
+Thus, the JSP library management application was developed to accept and display book issue and return details successfully.

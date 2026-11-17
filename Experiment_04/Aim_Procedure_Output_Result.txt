@@ -1,0 +1,55 @@
+EXPERIMENT 4: Arithmetic Operations using JavaScript
+
+AIM
+To develop a JavaScript program to perform addition, subtraction, multiplication and division.
+
+PROCEDURE
+1. Create a file named arithmetic.html.
+2. Create two input fields to enter numbers.
+3. Create buttons for the four arithmetic operations.
+4. Write a JavaScript function to read the values and perform the selected operation.
+5. Display the answer on the web page.
+6. Open the file in a browser and test the operations.
+
+PROGRAM FILES
+
+arithmetic.html
+===============
+<!DOCTYPE html>
+<html>
+<head><title>Arithmetic Operations</title></head>
+<body>
+<h2>Arithmetic Operations</h2>
+<input type="number" id="a" placeholder="First number">
+<input type="number" id="b" placeholder="Second number"><br><br>
+<button onclick="calculate('+')">Addition</button>
+<button onclick="calculate('-')">Subtraction</button>
+<button onclick="calculate('*')">Multiplication</button>
+<button onclick="calculate('/')">Division</button>
+<p id="result">Result:</p>
+<script>
+function calculate(op) {
+  const a = Number(document.getElementById("a").value);
+  const b = Number(document.getElementById("b").value);
+  let answer;
+  if (op === '+') answer = a + b;
+  else if (op === '-') answer = a - b;
+  else if (op === '*') answer = a * b;
+  else if (op === '/') {
+    if (b === 0) {
+      document.getElementById("result").textContent = "Cannot divide by zero";
+      return;
+    }
+    answer = a / b;
+  }
+  document.getElementById("result").textContent = "Result: " + answer;
+}
+</script>
+</body>
+</html>
+
+OUTPUT
+For inputs 20 and 5: Addition = 25, Subtraction = 15, Multiplication = 100 and Division = 4.
+
+RESULT
+Thus, the JavaScript program to perform the four arithmetic operations was executed successfully.

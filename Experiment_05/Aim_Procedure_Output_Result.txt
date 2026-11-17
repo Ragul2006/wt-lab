@@ -1,0 +1,58 @@
+EXPERIMENT 5: Invoke a Java Servlet from an HTML Form and Display Student Name
+
+AIM
+To write a Java Servlet program that receives a student name from an HTML form and displays it.
+
+PROCEDURE
+1. Create a Dynamic Web Project in an IDE.
+2. Add the HTML form file index.html to the web application.
+3. Create a servlet named StudentServlet.
+4. Read the submitted name using request.getParameter().
+5. Display the name using PrintWriter.
+6. Deploy the project on Apache Tomcat and open the form in a browser.
+
+PROGRAM FILES
+
+index.html
+==========
+<!DOCTYPE html>
+<html>
+<head><title>Student Form</title></head>
+<body>
+<h2>Student Information</h2>
+<form action="StudentServlet" method="post">
+  Student Name: <input type="text" name="studentName" required>
+  <input type="submit" value="Submit">
+</form>
+</body>
+</html>
+
+StudentServlet.java
+===================
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/StudentServlet")
+public class StudentServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request,
+                          HttpServletResponse response)
+                          throws ServletException, IOException {
+        response.setContentType("text/html");
+        String name = request.getParameter("studentName");
+        PrintWriter out = response.getWriter();
+        out.println("<html><body>");
+        out.println("<h2>Student Name: " + name + "</h2>");
+        out.println("</body></html>");
+    }
+}
+
+OUTPUT
+After entering the name Arun and clicking Submit, the servlet displays: Student Name: Arun.
+
+RESULT
+Thus, the servlet was invoked from an HTML form and the submitted student name was displayed successfully.

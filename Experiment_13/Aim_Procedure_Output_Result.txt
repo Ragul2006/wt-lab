@@ -1,0 +1,43 @@
+EXPERIMENT 13: Employee Details in XML with DTD Validation
+
+AIM
+To create an XML document to store employee ID, name, department, designation and salary, and validate it using DTD.
+
+PROCEDURE
+1. Create employee.dtd and define the employee elements.
+2. Create employee.xml and refer to employee.dtd using a DOCTYPE declaration.
+3. Enter employee details in the required element order.
+4. Save both files in the same folder.
+5. Validate employee.xml using an XML validator or XML editor that supports DTD.
+
+PROGRAM FILES
+
+employee.xml
+============
+<?xml version="1.0"?>
+<!DOCTYPE employees SYSTEM "employee.dtd">
+<employees>
+  <employee>
+    <empid>1001</empid>
+    <name>Arun</name>
+    <department>Development</department>
+    <designation>Programmer</designation>
+    <salary>30000</salary>
+  </employee>
+</employees>
+
+employee.dtd
+============
+<!ELEMENT employees (employee+)>
+<!ELEMENT employee (empid, name, department, designation, salary)>
+<!ELEMENT empid (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT department (#PCDATA)>
+<!ELEMENT designation (#PCDATA)>
+<!ELEMENT salary (#PCDATA)>
+
+OUTPUT
+The XML document stores employee ID 1001, name Arun, department Development, designation Programmer and salary 30000. The document passes validation when its structure matches the DTD.
+
+RESULT
+Thus, employee details were stored in XML and validated successfully using DTD.

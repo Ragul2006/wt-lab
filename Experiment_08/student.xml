@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="student.xsl"?>
+<students>
+  <student><rollno>101</rollno><name>Arun</name><department>AI and DS</department></student>
+  <student><rollno>102</rollno><name>Priya</name><department>CSE</department></student>
+</students>

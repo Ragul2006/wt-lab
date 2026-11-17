@@ -1,0 +1,38 @@
+EXPERIMENT 7: XML Student Details Validation using DTD
+
+AIM
+To create an XML document to store student details and validate the document using a DTD.
+
+PROCEDURE
+1. Create a file named student.dtd and define the allowed XML elements.
+2. Create student.xml and include the DTD declaration.
+3. Enter student details inside the student element.
+4. Save both files in the same folder.
+5. Validate student.xml using an XML validator or an XML editor that supports DTD validation.
+
+PROGRAM FILES
+
+student.xml
+===========
+<?xml version="1.0"?>
+<!DOCTYPE student SYSTEM "student.dtd">
+<student>
+  <rollno>101</rollno>
+  <name>Arun</name>
+  <department>AI and Data Science</department>
+  <year>Third Year</year>
+</student>
+
+student.dtd
+===========
+<!ELEMENT student (rollno, name, department, year)>
+<!ELEMENT rollno (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT department (#PCDATA)>
+<!ELEMENT year (#PCDATA)>
+
+OUTPUT
+The XML document contains roll number 101, name Arun, department AI and Data Science, and year Third Year. A valid document passes DTD validation.
+
+RESULT
+Thus, student details were stored in an XML document and validated successfully using DTD.

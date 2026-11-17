@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE employees SYSTEM "employee.dtd">
+<employees>
+  <employee>
+    <empid>1001</empid>
+    <name>Arun</name>
+    <department>Development</department>
+    <designation>Programmer</designation>
+    <salary>30000</salary>
+  </employee>
+</employees>

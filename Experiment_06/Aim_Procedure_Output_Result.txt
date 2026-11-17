@@ -1,0 +1,58 @@
+EXPERIMENT 6: Online Examination using JSP
+
+AIM
+To develop a JSP application for conducting an online examination and displaying the student's result.
+
+PROCEDURE
+1. Create a JSP web project and add exam.jsp.
+2. Display multiple-choice questions using radio buttons.
+3. Submit the answers to result.jsp using the POST method.
+4. Read the submitted answers using request.getParameter().
+5. Calculate the score and display the result.
+6. Run the application on a JSP-supported server such as Apache Tomcat.
+
+PROGRAM FILES
+
+exam.jsp
+========
+<%@ page contentType="text/html;charset=UTF-8" %>
+<html><head><title>Online Examination</title></head><body>
+<h2>Online Examination</h2>
+<form action="result.jsp" method="post">
+  Student Name: <input type="text" name="student" required><br><br>
+  1. HTML stands for?<br>
+  <input type="radio" name="q1" value="1" required> Hyper Text Markup Language<br>
+  <input type="radio" name="q1" value="0"> High Text Machine Language<br><br>
+  2. Which tag creates a hyperlink?<br>
+  <input type="radio" name="q2" value="1" required> &lt;a&gt;<br>
+  <input type="radio" name="q2" value="0"> &lt;p&gt;<br><br>
+  3. Which language styles a web page?<br>
+  <input type="radio" name="q3" value="1" required> CSS<br>
+  <input type="radio" name="q3" value="0"> SQL<br><br>
+  <input type="submit" value="Submit Exam">
+</form>
+</body></html>
+
+result.jsp
+==========
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%
+String student = request.getParameter("student");
+int score = 0;
+for (int i = 1; i <= 3; i++) {
+    String answer = request.getParameter("q" + i);
+    if ("1".equals(answer)) score++;
+}
+%>
+<html><head><title>Exam Result</title></head><body>
+<h2>Examination Result</h2>
+<p>Student Name: <%= student %></p>
+<p>Correct Answers: <%= score %> out of 3</p>
+<p><%= score >= 2 ? "PASS" : "FAIL" %></p>
+</body></html>
+
+OUTPUT
+The exam page displays three multiple-choice questions. After submission, the result page displays the student name, number of correct answers and PASS/FAIL status.
+
+RESULT
+Thus, the JSP online examination application was developed to evaluate answers and display the result successfully.

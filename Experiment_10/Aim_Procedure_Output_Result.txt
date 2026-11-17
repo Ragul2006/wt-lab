@@ -1,0 +1,54 @@
+EXPERIMENT 10: Online Shopping Web Page using HTML and CSS
+
+AIM
+To create an online shopping web page displaying product names, images, prices and purchase options using HTML and CSS.
+
+PROCEDURE
+1. Create index.html and style.css in one folder.
+2. Add a page heading and product section.
+3. For each product, display an image, name and price.
+4. Add a Buy Now button for each product.
+5. Apply CSS to arrange products in cards.
+6. Open index.html in a browser.
+
+PROGRAM FILES
+
+index.html
+==========
+<!DOCTYPE html>
+<html>
+<head><title>Online Shopping</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<h1>Online Shopping Store</h1>
+<div class="products">
+  <div class="card">
+    <img src="phone.jpg" alt="Mobile phone">
+    <h3>Smartphone</h3><p>Price: Rs. 15,000</p>
+    <button>Buy Now</button>
+  </div>
+  <div class="card">
+    <img src="headphones.jpg" alt="Headphones">
+    <h3>Headphones</h3><p>Price: Rs. 2,000</p>
+    <button>Buy Now</button>
+  </div>
+  <div class="card">
+    <img src="watch.jpg" alt="Watch">
+    <h3>Smart Watch</h3><p>Price: Rs. 3,000</p>
+    <button>Buy Now</button>
+  </div>
+</div>
+</body></html>
+
+style.css
+=========
+body { font-family: Arial; background: #f2f2f2; text-align: center; }
+.products { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.card { background: white; padding: 15px; width: 200px; border: 1px solid #ccc; }
+.card img { width: 160px; height: 130px; object-fit: contain; }
+button { background: green; color: white; padding: 10px; border: 0; }
+
+OUTPUT
+A shopping page displays three product cards with product images, names, prices and Buy Now buttons. Place phone.jpg, headphones.jpg and watch.jpg in the same folder.
+
+RESULT
+Thus, an online shopping web page using HTML and CSS was created successfully.

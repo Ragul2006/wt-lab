@@ -1,0 +1,42 @@
+EXPERIMENT 2: Image Map with Clickable Hotspots
+
+AIM
+To create a web page with an image map, define hotspots and display related information when a hotspot is clicked.
+
+PROCEDURE
+1. Save an image as india.jpg in the same folder as the HTML file.
+2. Create index.html and insert the image using the <img> tag.
+3. Connect the image to a map using the usemap attribute.
+4. Define clickable areas using the <area> tag with shape and coordinates.
+5. Open the HTML file and click the hotspots.
+
+PROGRAM FILES
+
+index.html
+==========
+<!DOCTYPE html>
+<html>
+<head><title>Image Map</title></head>
+<body>
+<h2>India - Image Map</h2>
+<p>Click a hotspot to view information.</p>
+<img src="india.jpg" alt="India map" usemap="#indiamap" width="500">
+<map name="indiamap">
+  <area shape="rect" coords="40,40,150,120" href="javascript:void(0)" onclick="showInfo('Delhi: Capital of India')">
+  <area shape="rect" coords="160,150,270,240" href="javascript:void(0)" onclick="showInfo('Mumbai: Major city in Maharashtra')">
+  <area shape="rect" coords="100,300,220,390" href="javascript:void(0)" onclick="showInfo('Chennai: Capital of Tamil Nadu')">
+</map>
+<p id="info">Selected place information appears here.</p>
+<script>
+function showInfo(message) {
+  document.getElementById("info").textContent = message;
+}
+</script>
+</body>
+</html>
+
+OUTPUT
+The image is displayed. Clicking a defined hotspot displays the corresponding city information below the image. Hotspot coordinates must be adjusted to match the selected image.
+
+RESULT
+Thus, an image map with clickable hotspots and related information was created successfully.

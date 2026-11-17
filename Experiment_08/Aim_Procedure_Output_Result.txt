@@ -1,0 +1,51 @@
+EXPERIMENT 8: Transform XML Data into HTML using XSLT
+
+AIM
+To write an XML program and transform its data into an HTML table using XSLT.
+
+PROCEDURE
+1. Create student.xml containing student information.
+2. Add an xml-stylesheet processing instruction referring to student.xsl.
+3. Create student.xsl with an XSLT template.
+4. Use xsl:for-each to read each student record.
+5. Create HTML table rows using xsl:value-of.
+6. Open the XML file in an XSLT-capable browser or transform it using an XSLT processor.
+
+PROGRAM FILES
+
+student.xml
+===========
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="student.xsl"?>
+<students>
+  <student><rollno>101</rollno><name>Arun</name><department>AI and DS</department></student>
+  <student><rollno>102</rollno><name>Priya</name><department>CSE</department></student>
+</students>
+
+student.xsl
+===========
+<?xml version="1.0"?>
+<xsl:stylesheet version="1.0"
+ xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:template match="/">
+<html><head><title>Student Details</title></head><body>
+<h2>Student Details</h2>
+<table border="1">
+<tr><th>Roll Number</th><th>Name</th><th>Department</th></tr>
+<xsl:for-each select="students/student">
+<tr>
+<td><xsl:value-of select="rollno"/></td>
+<td><xsl:value-of select="name"/></td>
+<td><xsl:value-of select="department"/></td>
+</tr>
+</xsl:for-each>
+</table>
+</body></html>
+</xsl:template>
+</xsl:stylesheet>
+
+OUTPUT
+An HTML table is generated with columns Roll Number, Name and Department, containing the two student records.
+
+RESULT
+Thus, XML data was transformed into an HTML table successfully using XSLT.
